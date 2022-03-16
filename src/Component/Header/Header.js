@@ -1,9 +1,11 @@
+import logo from '../../Asset/Logo.png'
 import '../Header/Header.css'
+
  function Header(){
     return(
 
         <div className='Header'>
-            Everyday News
+          <img src={logo} alt=""/>  <p>Everyday News</p>
         </div>
     )
 

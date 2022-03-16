@@ -31,15 +31,13 @@
    overflow: hidden;
    display: flex;
    flex-wrap: nowrap;
-  /* flex-wrap: wrap; */
-  background-color: aqua;
-  /* display: grid; */
+  
  
  
     
 }
 .mid-post .mid:last-child{
-    background-color: blue;
+   
     display: flex;
 }
 .mid-post .mid:last-child .image-div{
@@ -51,7 +49,7 @@
 }
 .mid{
     color: black;
-   
+    cursor: pointer;
     width: 50%;
     margin-bottom: 40px;
     margin-right: 15px;

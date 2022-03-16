@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {  useNavigate } from 'react-router-dom';
 import { AiOutlineArrowRight } from "react-icons/ai";
 import {Oval} from "react-loader-spinner";
 import { useEffect,useState } from 'react'
@@ -7,11 +7,13 @@ import axios from 'axios';
 import '../Midarea/Midarea.css'
 
 function Midarea({name,num}){
+    const navigate=useNavigate()
     const [data,setData]=useState([])
     const[loading,setLoading]=useState(false)
    const parse=require('html-react-parser')
-    useEffect(()=>{
-    
+ 
+   useEffect(()=>{
+   
         
         
           axios.get("https://brooksandblake.com/blogapis/wp-json/wp/v2/posts/")
@@ -21,7 +23,7 @@ function Midarea({name,num}){
           
            setData(res.data)
            setLoading(true)
-          
+    
           
          
           })
@@ -31,16 +33,53 @@ function Midarea({name,num}){
         
        .catch (err =>{
           
-        console.log(err)
+       
           })
        
     },[])    
     
-    console.log(data)
   
+    function move(val,id){
+       navigate('/singlepage/id')
+    }
     let cont=""
     
+     data.forEach((val,indxx)=>{
+        val.categories.map((vals)=>{
+           
+            if(((vals===3)&&(num===3))){
+              
+
+            
+          return(
+             
+                cont+=`<div className="mid"  >
+               <div className="image-div"><img src=${val.jetpack_featured_media_url} alt=""/></div>
+               <div>
+               <h4 className="title-parag"> ${val.title.rendered}</h4>
+                <p >${val.excerpt.rendered}</p>
+                </div>
+                </div>
+                        `
+              
+            )       
+                       
+             
+            }
+      
+     
+         
+               
+       
+       
+    
+        })
+      
+        return""
+      })
    
+   
+  
     
     return(
 
@@ -57,53 +96,18 @@ function Midarea({name,num}){
             </div>
             </div>
            
-            {  data.map((val,indxx)=>{
-                val.categories.map((vals)=>{
-                   
-                    if(((vals===3)&&(num===3))){
-                      
-
-                       
-                      
-                  
-                       
-                       return( cont+=`<div className="mid">
-                       <div className="image-div"><img src=${val.jetpack_featured_media_url} alt=""/></div>
-                       <div>
-                       <h4 className="title-parag"> ${val.title.rendered}</h4>
-                        <p>${val.excerpt.rendered}</p>
-                        </div>
-                        </div>`
-
-                        )
-                              
-                               
-                     
-                    }
-              
-             
-                   
-                       
-               
-
-                       
-                  
-                  
-                      
-                  
-                       
-               
-            
-                })
-                return " "
-
-              })}
+           
           
-            <div className='post-container'>
+            <div className='post-container' >
                
-                     <div className='mid-post'>
-                         {parse(cont)}
-              
+                     <div className='mid-post'  >
+                     
+          
+                         {parse(cont )}
+                       
+                       
+                        
+               
            
             </div>
            
