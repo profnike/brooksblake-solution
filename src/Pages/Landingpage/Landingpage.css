@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.Landingpage-body{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.each-post {
+ 
+    margin-bottom: 40px;
+    margin-right: 10px;
+   height: 900px;
+   overflow: hidden;
+   display: flex;
+   flex-wrap: nowrap;
+  flex-wrap: wrap;
+  
+  /* display: grid; */
+ 
+ 
+    
+}
+.Landingpage-body .inner-post{
+    background-color: aqua;
+    /* display: flex;
+    justify-content: flex-start; */
+    width: 300px;
+    margin-right: 10px;
+    background-color: cadetblue;
+    /* display: flex; */
+    /* display: grid;
+   margin-top: 15px;
+    grid-template-columns: 25%  25% 25% 25%; */
+}
+
+.post-container{
+    /* display: grid; */
+   margin-top: 15px;
+    grid-template-columns: 25%  25% 25% ;
+    /* justify-content:flex-start; */
+    /* display: flex; */
+    justify-content: flex-start;
+    /* flex-wrap: nowrap; */
+    flex-wrap: wrap;
+    /* min-width: 100%;
+    max-width: 100%; */
+    background-color: rgb(0, 255, 221);
+    
+}
+
+
+.each-post .title{
+    font-weight: bold;
+}
+.each-post .imagespan{
+    /* width: 100%; */
+    height: 200px;
+    margin-bottom: 10px;
+    
+}
+.each-post .imagespan img{
+    width: 100%;
+    height: 100%;
+}
+.check{
+    color: black;
+    width: 250px;
+    width: 40%;
+    margin-bottom: 40px;
+    margin-right: 15px;
+    min-height: 400px;
+}
+.each-post .seperate{
+    width: 50%;
+}
+.check .image-div{
+    height: 200px;
+    margin-bottom: 10px;
+}
+.check .image-div img{
+    width: 100%;
+    height: 100%;
+}
+.check p{
+    font-size: 13px;
+}
+
+@media screen and (max-width:820px) {
+    .each-post{
+        height: 850px;
+        justify-content: center;
+    }
+}
