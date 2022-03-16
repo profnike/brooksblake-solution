@@ -3,10 +3,13 @@ import Header from '../../Component/Header/Header'
 import { useEffect,useState } from 'react'
  import axios from 'axios'
 import '../Landingpage/Landingpage.css'
-import Singlepost from '../../Component/Singlepost/Singlepost';
+import Singlepost from '../../Component/Firstarea/Firstarea';
+import Midarea from '../../Component/Midarea/Midarea';
+import Lastarea from '../../Component/Lastarea/Lastarea';
 
 function Landingpage(){
     const [data,setData]=useState([])
+   
    
     useEffect(()=>{
     
@@ -40,11 +43,9 @@ function Landingpage(){
         <div className='Landingpage'>
             <Header/>
             <Singlepost name={"Blog"}num={2} />
-            <Singlepost name={"Editorial"}num={3} />
-            {/* <Singlepost name={"Editorial"}num={3} />
-            <Singlepost name={"Match Review"}num={5} /> */}
-            <Singlepost name={"News"}num={6} />
-            {/* <Singlepost name={"Player Focus"}num={7} /> */}
+            <Midarea name={"Editorial"} num={3}/>
+            <Lastarea name={"News"} num={6}/>
+           
         </div>
     )
 
