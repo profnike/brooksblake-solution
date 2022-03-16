@@ -13,35 +13,22 @@
    flex-wrap: nowrap;
   flex-wrap: wrap;
   
-  /* display: grid; */
+ 
  
  
     
 }
-.Landingpage-body .inner-post{
-  
-    /* display: flex;
-    justify-content: flex-start; */
-    width: 300px;
-    margin-right: 10px;
-    background-color: cadetblue;
-    /* display: flex; */
-    /* display: grid;
-   margin-top: 15px;
-    grid-template-columns: 25%  25% 25% 25%; */
-}
+
 
 .post-container{
-    /* display: grid; */
+   
    margin-top: 15px;
     grid-template-columns: 25%  25% 25% ;
-    /* justify-content:flex-start; */
-    /* display: flex; */
+  
     justify-content: flex-start;
-    /* flex-wrap: nowrap; */
+  
     flex-wrap: wrap;
-    /* min-width: 100%;
-    max-width: 100%; */
+   
    
     
 }
@@ -51,7 +38,7 @@
     font-weight: bold;
 }
 .each-post .imagespan{
-    /* width: 100%; */
+   
     height: 200px;
     margin-bottom: 10px;
     
