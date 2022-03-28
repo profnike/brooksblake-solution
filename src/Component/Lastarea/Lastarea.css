@@ -10,9 +10,9 @@
    height: 400px;
    overflow: hidden;
    display: flex;
-   flex-wrap: nowrap;
+   
   flex-wrap: wrap;
-  
+ 
   
  
  
@@ -50,7 +50,7 @@
 .check{
     color: black;
     width: 250px;
-    width: 250px;
+   cursor: pointer;
     margin-bottom: 40px;
     margin-right: 15px;
     min-height: 400px;

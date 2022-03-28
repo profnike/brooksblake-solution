@@ -1,16 +1,20 @@
 import React from 'react';
 import { AiOutlineArrowRight } from "react-icons/ai";
 import {Oval} from "react-loader-spinner";
-
+import {  useNavigate } from 'react-router-dom';
 import { useEffect,useState } from 'react'
 import axios from 'axios';
 import '../Firstarea/Firstarea.css'
 
-function Firstarea({name,num}){
-    const [data,setData]=useState([])
-    const[loading,setLoading]=useState(false)
+function Firstarea({name}){
    
+    const[loading,setLoading]=useState(false)
+    const[arr,setArr]=useState([])
    const parse=require('html-react-parser')
+   const navigate=useNavigate()
+   let valarr=[]
+
+   let arrs=[]
     useEffect(()=>{
     
         
@@ -18,9 +22,23 @@ function Firstarea({name,num}){
           axios.get("https://brooksandblake.com/blogapis/wp-json/wp/v2/posts/")
           
           .then(res =>{
-           
+            valarr=res.data
+            valarr.map((val)=>{
+                val.categories.map((vals,ind)=>{
+                   
+                    if(vals===6){
+                     
+                    arrs.push(Object.assign({},val))
+                    setArr(arrs)
+
+                    }
+                  
+                })
+             
+
+            })
           
-           setData(res.data)
+        //    setData(res.data)
            setLoading(true)
           
           
@@ -32,14 +50,11 @@ function Firstarea({name,num}){
         
        .catch (err =>{
           
-        console.log(err)
+      
           })
        
     },[])    
-    
-    console.log(data)
   
-    let cont=""
     
    
     
@@ -57,51 +72,24 @@ function Firstarea({name,num}){
             <AiOutlineArrowRight/>
             </div>
             </div>
-           
-            {  data.map((val,indxx)=>{
-                val.categories.map((vals)=>{
-                   
-                    if(((vals===2)&&(num===2))){
-                      
-
-                       
-                      
-                  
-                       
-                       return( cont+=`<div className="check">
-                       <div className="image-div"><img src=${val.jetpack_featured_media_url} alt=""/></div>
-                       <h4 className="title-parag"> ${val.title.rendered}</h4>
-                        <p>${val.excerpt.rendered}</p>
-                        </div>`
-
-                        )
-                              
-                               
-                     
-                    }
-              
-             
-                   
-                       
-               
-
-                       
-                  
-                  
-                      
-                  
-                       
-               
-            
-                })
-                return ""
-
-              })}
           
             <div className='post-container'>
                
                      <div className='each-post'>
-                         {parse(cont)}
+                     { arr.map((val,index)=>{
+                            return(
+                                <div key={index} className="check" onClick={(()=>{navigate(`/post/${val.id}`)})}  >
+               <div className="image-div"><img src={val.jetpack_featured_media_url} alt=""/></div>
+               <div>
+               <h4 className="title-parag"> {parse(val.title.rendered)}</h4>
+                <span >{parse(val.excerpt.rendered)}</span>
+                </div>
+                </div>
+                            )
+
+
+                        })}
+                         {/* {parse(cont)} */}
               
            
             </div>

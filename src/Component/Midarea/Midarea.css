@@ -11,6 +11,10 @@
 .header-area p{
     color: red;
 }
+.header-area h1{
+    color: #00B0F0;
+
+}
 .arrow-p{
     display: flex;
     justify-content: space-between;

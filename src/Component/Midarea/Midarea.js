@@ -6,12 +6,16 @@ import { useEffect,useState } from 'react'
 import axios from 'axios';
 import '../Midarea/Midarea.css'
 
-function Midarea({name,num}){
+function Midarea({name}){
     const navigate=useNavigate()
-    const [data,setData]=useState([])
+   
+    const[arr,setArr]=useState([])
     const[loading,setLoading]=useState(false)
    const parse=require('html-react-parser')
- 
+   let valarr=[]
+
+  
+   let arrs=[]
    useEffect(()=>{
    
         
@@ -20,63 +24,48 @@ function Midarea({name,num}){
           
           .then(res =>{
            
-          
-           setData(res.data)
+            valarr=res.data
+            valarr.map((val)=>{
+                val.categories.map((vals,ind)=>{
+                   
+                    if(vals===3){
+                       
+                       
+                       
+                   
+                    arrs.push(Object.assign({},val))
+                    setArr(arrs)
+
+                    }
+                   
+                    
+                })
+             
+             
+                   
+
+            })
+           
+        //    setData(res.data)
            setLoading(true)
-    
           
+         
          
           })
            
          
-          
+         
         
        .catch (err =>{
           
        
           })
+         
+        
        
     },[])    
-    
   
-    function move(val,id){
-       navigate('/singlepage/id')
-    }
-    let cont=""
-    
-     data.forEach((val,indxx)=>{
-        val.categories.map((vals)=>{
-           
-            if(((vals===3)&&(num===3))){
-              
-
-            
-          return(
-             
-                cont+=`<div className="mid"  >
-               <div className="image-div"><img src=${val.jetpack_featured_media_url} alt=""/></div>
-               <div>
-               <h4 className="title-parag"> ${val.title.rendered}</h4>
-                <p >${val.excerpt.rendered}</p>
-                </div>
-                </div>
-                        `
-              
-            )       
-                       
-             
-            }
-      
-     
-         
-               
-       
-       
-    
-        })
-      
-        return""
-      })
+  
    
    
   
@@ -103,7 +92,20 @@ function Midarea({name,num}){
                      <div className='mid-post'  >
                      
           
-                         {parse(cont )}
+                        
+                        { arr.map((val,index)=>{
+                            return(
+                                <div key={index} className="mid" onClick={(()=>{navigate(`/post/${val.id}`)})}  >
+               <div className="image-div"><img src={val.jetpack_featured_media_url} alt=""/></div>
+               <div>
+               <h4 className="title-parag"> {parse(val.title.rendered)}</h4>
+                <span >{parse(val.excerpt.rendered)}</span>
+                </div>
+                </div>
+                            )
+
+
+                        })}
                        
                        
                         
